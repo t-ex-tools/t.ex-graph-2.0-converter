@@ -1,0 +1,14 @@
+[
+  "xmlhttprequest",
+  "image",
+  "font",
+  "script",
+  "stylesheet",
+  "ping",
+  "sub_frame",
+  "other",
+  "main_frame",
+  "csp_report",
+  "object",
+  "media"
+]
