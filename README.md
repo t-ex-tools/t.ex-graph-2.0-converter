@@ -52,7 +52,7 @@ We only consider edges where $source \neq target$, consequently, nodes do not ha
 
 ## Modeling Data Flows
 
-![image](./t.ex-graph.svg)
+![image](./doc/images/t.ex-graph.svg)
 
 The goal of our graph is to represent the data flows between hosts. Hence, we compute attributes of edges, which, in a second step, are accumulated at the nodes of the graph. We extend our vertices $v \in V$ and edges $e \in E$ by a tuple $attrs$. The attributes at the edge level are derived from the HTTP/S requests and can be *counts*, *sums* (e.g., of URL lengths), or *maxima* of features of a request. The edge attributes are aggregated at node level. We, therefore, accumulate for each node the attributes of all *incoming* edges. For this, we either derive the *sum*, a *maxima*, or a *boolean* value encoded in ```0``` (for ```false```) or ```1``` (for ```true```). Sums of features can be further divided by the number of requests or number of in-neighbors.
 
