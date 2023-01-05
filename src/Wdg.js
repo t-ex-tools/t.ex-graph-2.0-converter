@@ -12,17 +12,46 @@ const urlOptions = {
 };
 
 
-
+/**
+ * @class Wdg
+ * @desc Class ``Wdg`` which stands for weighted directed graph.
+ * @returns {Object} A graph generated with ``graphology``.
+ * See {@link https://www.npmjs.com/package/graphology|graphology} for more details.
+ */
 export default function() {
 
+  /**
+   * @constant
+   * @type {Object}
+   * @default
+   * @memberof Wdg
+   * @desc Instance of a class ``Graph`` from ``graphology``. 
+   */
   const graph = new Graph();
 
   return {
 
+    /**
+     * @function
+     * @memberof Wdg
+     * @desc A getter function to retrieve the graph instance.
+     * @returns Returns the graph instance.
+     */
     get() {
       return graph;
     },
 
+    /**
+     * Adds a node to the graph instance.
+     * @memberof Wdg
+     * @param {String} node The domain name of a node 
+     * (
+     * {@link https://en.wikipedia.org/wiki/Fully_qualified_domain_name|FQDN} 
+     * or 
+     * {@link https://en.wikipedia.org/wiki/Second-level_domain|SLD}
+     * ).
+     * @param {Object} attrs The attributes of the node.
+     */
     addNode(node, attrs) {
       if (!graph.hasNode(node)) {
         graph.addNode(node, attrs);
@@ -31,6 +60,26 @@ export default function() {
       }
     },
 
+    /**
+     * Adds an edge from ``source`` to ``target`` to the graph instance.
+     * In case the edge already exists, the edge is updated.
+     * @memberof Wdg
+     * @param {String} source The domain name of the source node
+     * (
+     * {@link https://en.wikipedia.org/wiki/Fully_qualified_domain_name|FQDN} 
+     * or 
+     * {@link https://en.wikipedia.org/wiki/Second-level_domain|SLD}
+     * ).
+     * @param {String} target The domain name of the target node
+     * (
+     * {@link https://en.wikipedia.org/wiki/Fully_qualified_domain_name|FQDN} 
+     * or 
+     * {@link https://en.wikipedia.org/wiki/Second-level_domain|SLD}
+     * ).
+     * @param {Object} r An HTTP/S request retrieved from the ``webRequest`` interface. 
+     * See {@link https://developer.chrome.com/docs/extensions/reference/webRequest/#event-onBeforeRequest|webRequest.onBeforeRequest()}
+     * for more details.
+     */
     addEdge(source, target, r) {
       if (!graph.hasEdge(source, target)) {
         
@@ -59,10 +108,50 @@ export default function() {
       }
     },
 
+    /**
+     * A function to retrieve a specific edge between ``source`` and ``target``.
+     * @memberof Wdg
+     * @param {String} source The domain name of the source node
+     * (
+     * {@link https://en.wikipedia.org/wiki/Fully_qualified_domain_name|FQDN} 
+     * or 
+     * {@link https://en.wikipedia.org/wiki/Second-level_domain|SLD}
+     * ).
+     * @param {String} target The domain name of the target node
+     * (
+     * {@link https://en.wikipedia.org/wiki/Fully_qualified_domain_name|FQDN} 
+     * or 
+     * {@link https://en.wikipedia.org/wiki/Second-level_domain|SLD}
+     * ).
+     * @returns {Object} Returns the requested edge in case it exists. Returns ``undefined`` otherwise.
+     */
     getEdge(source, target) {
       return graph.edge(source, target);
     },
 
+    /**
+     * A method to process a single HTTP/S request from the dataset. 
+     * The processing includes the following steps:
+     * 1. Extract ``source`` and ``target`` using 
+     * {@link module:Util.source|``Util.source()``} and 
+     * {@link module:Util.target|``Util.target()``}, respectively.
+     * 2. Check whether ``source`` and ``target`` are valid URLs using 
+     * {@link https://www.npmjs.com/package/validator|``validator``}.
+     * 3. Extract the FQDNs of ``source`` and ``target``. 
+     * 4. Extract the SLDs of ``source`` and ``target`` using
+     * {@link https://www.npmjs.com/package/tldjs|``tldjs``}.
+     * 5. Determine whether ``r`` is a first-party or third-party request.
+     *    Discard all first-party requests unless option ``firstParty === true``.
+     * 6. In case option ``sld === true`` use the extracted SLDs of ``source`` and ``target``
+     *    as the node names. Use the FQDNs of ``source`` and ``target`` otherwise.
+     * 7. Add nodes and edge using {@link Wdg.addNode|``Wdg.addNode``} and {@link Wdg.addEdge|``Wdg.addEdge``}.
+     * @memberof Wdg
+     * @param {Object} r An HTTP/S request retrieved from the ``webRequest`` interface. 
+     * See {@link https://developer.chrome.com/docs/extensions/reference/webRequest/#event-onBeforeRequest|webRequest.onBeforeRequest()}
+     * for more details.
+     * @param {Object} options Options object passed by ``commander`` to this function.
+     * See {@link https://www.npmjs.com/package/commander#options} for more details.
+     */
     process(r, options) {
       let target = Util.target(r);
       let source = Util.source(r);
@@ -97,6 +186,13 @@ export default function() {
       this.addEdge(source, target, r);
     },
 
+    /**
+     * A method to compute the **node attributes** for a graph instance.
+     * **NOTE:** This method is called after all HTTP/S request have been processed
+     * using {@link Wdg.process|``Wdg.process``}.
+     * @method
+     * @memberof Wdg
+     */
     attributes() {
       graph
         .forEachNode((node, attrs) => {
@@ -110,7 +206,7 @@ export default function() {
                     if (Features[key].accumulate) {
                       acc[key] = Features[key].accumulate(acc[key], attr[key]);
                     } else {
-                      acc[key] = Util.add(acc[key], attr[key]);
+                      acc[key] = acc[key] + attr[key];
                     }
                   })
                 
