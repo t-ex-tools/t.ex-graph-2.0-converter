@@ -8,6 +8,10 @@ Afterwards you can convert HTTP/S requests to t.ex-Graph with the following comm
 
 ```node index.js gexf examples\ -o examples\output.gexf```
 
+# Documentation
+
+Following this link [t.ex-graph-converter](https://t-ex-tools.github.io/t.ex-graph-converter/),you can find the documentation of the code.
+
 # Manual
 
 ```
@@ -38,4 +42,20 @@ Options:
   -fp, --first-party   include first-party requests to generate nodes and edges
   -s, --silent         disable progress indicator printing on console
   -h, --help           display help for command  
+```
+
+# Citation
+
+This repository contains the artifacts of our paper *t.ex-Graph: Automated Web Tracker Detection Using Centrality Metrics and Data Flow Characteristics* (to be) presented at the [9th International Conference on Information Systems Security and Privacy (ICISSP 2023)](https://icissp.scitevents.org/) in Lisbon, Portugal.
+
+If you use t.ex-Graph in your work, please cite the publication using the following BibTex:
+
+```
+@inproceedings { 
+	Raschke.2023.t.ex-graph,
+    author = {Raschke, Philip and Herbke, Patrick and Schwerdtner, Henry},
+    title = {t.ex-Graph: Automated Web Tracker Detection Using Centrality Metrics and Flow Characteristics},
+    booktitle = {Proceedings of the 9th International Conference on Information Security and Privacy},
+    year = {2023},
+}
 ```
