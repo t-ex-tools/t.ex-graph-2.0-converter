@@ -52,7 +52,7 @@ If you use t.ex-Graph in your work, please cite the publication using the follow
 
 ```
 @inproceedings { 
-	Raschke.2023.t.ex-graph,
+  Raschke.2023.t.ex-graph,
     author = {Raschke, Philip and Herbke, Patrick and Schwerdtner, Henry},
     title = {t.ex-Graph: Automated Web Tracker Detection Using Centrality Metrics and Flow Characteristics},
     booktitle = {Proceedings of the 9th International Conference on Information Security and Privacy},
