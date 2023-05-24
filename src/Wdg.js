@@ -11,6 +11,7 @@ const urlOptions = {
   require_protocol: true,
 };
 
+let counter = 0;
 
 /**
  * @class Wdg
@@ -193,53 +194,84 @@ export default function() {
      * @method
      * @memberof Wdg
      */
-    attributes() {
-      graph
-        .forEachNode((node, attrs) => {
-          let features = graph
-            .reduceInEdges(
-              node, 
-              (acc, edge, attr) => {
-                Object
-                  .keys(attr)
-                  .forEach((key) => {
-                    if (Features[key].accumulate) {
-                      acc[key] = Features[key].accumulate(acc[key], attr[key]);
-                    } else {
-                      acc[key] = acc[key] + attr[key];
-                    }
-                  })
-                
-                return acc;
-              },
-              {
-                ...Object
-                  .keys(Features)
-                  .reduce((acc, val) => {
-                    acc[val] = 0;
-                    return acc;
-                  }, {})
-              }
-            );
+    async attributes() {
+      return new Promise((resolve, reject) => {
 
-            let indegree = graph.inDegree(node);
-            Object
-              .keys(features)
-              .forEach((feature) => {
-                graph.setNodeAttribute(
+        let nodes = graph
+          .nodes()
+          .map((node) => 
+            new Promise((res, rej) => {
+
+              let features = graph
+                .reduceInEdges(
                   node, 
-                  feature, 
+                  (acc, edge, attr) => {
+                    Object
+                      .keys(attr)
+                      .forEach((key) => {
+                        if (Features[key].accumulate) {
+                          acc[key] = Features[key].accumulate(acc[key], attr[key]);
+                        } else {
+                          acc[key] = acc[key] + attr[key];
+                        }
+                      })
+                    
+                    return acc;
+                  },
+                  {
+                    ...Object
+                      .keys(Features)
+                      .reduce((acc, val) => {
+                        acc[val] = 0;
+                        return acc;
+                      }, {})
+                  }
+                );
+
+              let indegree = graph.inDegree(node);
+              let promises = Object
+                .keys(features)
+                .map((feature) => 
                   Features[feature]
-                    .set(
-                      feature, 
-                      {
+                    .set(feature, {
+                        node: node,
                         ...features,
                         indegree
-                      }
-                    )
+                      })
                 );
+
+              Promise
+                .all(promises)
+                .then((values) => {
+                  let features = values
+                    .map((e, i) => ({
+                      [Object.keys(Features)[i]]: e
+                    }))
+                    .reduce((acc, val) => Object.assign(acc, val), {});
+
+                  res({ node: node, features: features });
+                })
+                .catch((err) => console.error(err));  
+            })
+          );
+
+        Promise
+          .all(nodes)
+          .then((results) => {
+            results
+              .forEach((e, idx) => {
+                graph.replaceNodeAttributes(
+                  e.node, 
+                  e.features
+                );
+
+                if (idx === results.length-1) {
+                  resolve(graph);
+                }
               });
-        })
+          })
+
+      });
     }
 
   };

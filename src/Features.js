@@ -2,6 +2,7 @@ import fs from 'fs';
 import Util from "./Util.js";
 import pkg from 'tldjs';
 const { getDomain } = pkg;
+import whois from 'whois-json';
 
 /**
  * @module Features
@@ -446,6 +447,27 @@ export default (() => {
       },
       'set': (feature, attrs) => {
         return Util.ratio(attrs[feature], attrs.count);
+      }
+    },
+
+    urlLength: {
+      'extract': () => null,
+      'set': (feature, attrs) => attrs.node.length
+    },
+
+    whoIs: {
+      'extract': () => null,
+      'set': async (feature, attrs) => {
+        let sld = getDomain(attrs.node);
+        try {
+          let whoIs = await whois(sld);
+          if (!whoIs.registrantOrganization) {
+            console.log(sld, whoIs)
+          }
+          return whoIs.registrantOrganization;
+        } catch (err) {
+          return "UNKNOWN";
+        }
       }
     }
 

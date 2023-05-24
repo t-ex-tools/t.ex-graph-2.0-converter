@@ -41,6 +41,8 @@
       <attribute id="maxSubdomainDepth" title="maxSubdomainDepth" type="integer"/>
       <attribute id="avgSubdomainLength" title="avgSubdomainLength" type="integer"/>
       <attribute id="avgPathLength" title="avgPathLength" type="string"/>
+      <attribute id="urlLength" title="urlLength" type="integer"/>
+      <attribute id="whoIs" title="whoIs" type="string"/>
     </attributes>
     <attributes class="edge">
       <attribute id="xmlhttprequest" title="xmlhttprequest" type="integer"/>
@@ -82,7 +84,7 @@
       <attribute id="avgPathLength" title="avgPathLength" type="integer"/>
     </attributes>
     <nodes>
-      <node id="medium.com" label="medium.com">
+      <node id="medium.com">
         <attvalues>
           <attvalue for="xmlhttprequest" value="0"/>
           <attvalue for="image" value="0"/>
@@ -122,9 +124,11 @@
           <attvalue for="maxSubdomainDepth" value="0"/>
           <attvalue for="avgSubdomainLength" value="0"/>
           <attvalue for="avgPathLength" value="0"/>
+          <attvalue for="urlLength" value="10"/>
+          <attvalue for="whoIs" value="UNKNOWN"/>
         </attvalues>
       </node>
-      <node id="static.cloudflareinsights.com" label="static.cloudflareinsights.com">
+      <node id="static.cloudflareinsights.com">
         <attvalues>
           <attvalue for="xmlhttprequest" value="0"/>
           <attvalue for="image" value="0"/>
@@ -164,9 +168,11 @@
           <attvalue for="maxSubdomainDepth" value="1"/>
           <attvalue for="avgSubdomainLength" value="7"/>
           <attvalue for="avgPathLength" value="61"/>
+          <attvalue for="urlLength" value="29"/>
+          <attvalue for="whoIs" value="DATA REDACTED"/>
         </attvalues>
       </node>
-      <node id="consent.dropbox.com" label="consent.dropbox.com">
+      <node id="consent.dropbox.com">
         <attvalues>
           <attvalue for="xmlhttprequest" value="0"/>
           <attvalue for="image" value="0"/>
@@ -206,9 +212,10 @@
           <attvalue for="maxSubdomainDepth" value="0"/>
           <attvalue for="avgSubdomainLength" value="0"/>
           <attvalue for="avgPathLength" value="0"/>
+          <attvalue for="urlLength" value="19"/>
         </attvalues>
       </node>
-      <node id="cfl.dropboxstatic.com" label="cfl.dropboxstatic.com">
+      <node id="cfl.dropboxstatic.com">
         <attvalues>
           <attvalue for="xmlhttprequest" value="0"/>
           <attvalue for="image" value="0"/>
@@ -248,9 +255,11 @@
           <attvalue for="maxSubdomainDepth" value="1"/>
           <attvalue for="avgSubdomainLength" value="4"/>
           <attvalue for="avgPathLength" value="76"/>
+          <attvalue for="urlLength" value="21"/>
+          <attvalue for="whoIs" value="Dropbox, Inc."/>
         </attvalues>
       </node>
-      <node id="c.evidon.com" label="c.evidon.com">
+      <node id="c.evidon.com">
         <attvalues>
           <attvalue for="xmlhttprequest" value="0"/>
           <attvalue for="image" value="0"/>
@@ -290,9 +299,11 @@
           <attvalue for="maxSubdomainDepth" value="1"/>
           <attvalue for="avgSubdomainLength" value="2"/>
           <attvalue for="avgPathLength" value="32.6"/>
+          <attvalue for="urlLength" value="12"/>
+          <attvalue for="whoIs" value="Domains By Proxy, LLC"/>
         </attvalues>
       </node>
-      <node id="l.evidon.com" label="l.evidon.com">
+      <node id="l.evidon.com">
         <attvalues>
           <attvalue for="xmlhttprequest" value="0"/>
           <attvalue for="image" value="1"/>
@@ -332,9 +343,11 @@
           <attvalue for="maxSubdomainDepth" value="1"/>
           <attvalue for="avgSubdomainLength" value="2"/>
           <attvalue for="avgPathLength" value="34"/>
+          <attvalue for="urlLength" value="12"/>
+          <attvalue for="whoIs" value="Domains By Proxy, LLC"/>
         </attvalues>
       </node>
-      <node id="www.sohu.com" label="www.sohu.com">
+      <node id="www.sohu.com">
         <attvalues>
           <attvalue for="xmlhttprequest" value="0"/>
           <attvalue for="image" value="0"/>
@@ -374,9 +387,10 @@
           <attvalue for="maxSubdomainDepth" value="0"/>
           <attvalue for="avgSubdomainLength" value="0"/>
           <attvalue for="avgPathLength" value="0"/>
+          <attvalue for="urlLength" value="12"/>
         </attvalues>
       </node>
-      <node id="statics.itc.cn" label="statics.itc.cn">
+      <node id="statics.itc.cn">
         <attvalues>
           <attvalue for="xmlhttprequest" value="0"/>
           <attvalue for="image" value="0.9230769230769231"/>
@@ -416,9 +430,10 @@
           <attvalue for="maxSubdomainDepth" value="1"/>
           <attvalue for="avgSubdomainLength" value="8"/>
           <attvalue for="avgPathLength" value="44.15384615384615"/>
+          <attvalue for="urlLength" value="14"/>
         </attvalues>
       </node>
-      <node id="p6.itc.cn" label="p6.itc.cn">
+      <node id="p6.itc.cn">
         <attvalues>
           <attvalue for="xmlhttprequest" value="0"/>
           <attvalue for="image" value="1"/>
@@ -458,9 +473,10 @@
           <attvalue for="maxSubdomainDepth" value="1"/>
           <attvalue for="avgSubdomainLength" value="3"/>
           <attvalue for="avgPathLength" value="87.66666666666667"/>
+          <attvalue for="urlLength" value="9"/>
         </attvalues>
       </node>
-      <node id="www.imdb.com" label="www.imdb.com">
+      <node id="www.imdb.com">
         <attvalues>
           <attvalue for="xmlhttprequest" value="0"/>
           <attvalue for="image" value="0"/>
@@ -500,9 +516,10 @@
           <attvalue for="maxSubdomainDepth" value="0"/>
           <attvalue for="avgSubdomainLength" value="0"/>
           <attvalue for="avgPathLength" value="0"/>
+          <attvalue for="urlLength" value="12"/>
         </attvalues>
       </node>
-      <node id="m.media-amazon.com" label="m.media-amazon.com">
+      <node id="m.media-amazon.com">
         <attvalues>
           <attvalue for="xmlhttprequest" value="0"/>
           <attvalue for="image" value="1"/>
@@ -542,9 +559,10 @@
           <attvalue for="maxSubdomainDepth" value="1"/>
           <attvalue for="avgSubdomainLength" value="2"/>
           <attvalue for="avgPathLength" value="123.26315789473684"/>
+          <attvalue for="urlLength" value="18"/>
         </attvalues>
       </node>
-      <node id="flickr.com" label="flickr.com">
+      <node id="flickr.com">
         <attvalues>
           <attvalue for="xmlhttprequest" value="0"/>
           <attvalue for="image" value="0"/>
@@ -584,9 +602,11 @@
           <attvalue for="maxSubdomainDepth" value="0"/>
           <attvalue for="avgSubdomainLength" value="0"/>
           <attvalue for="avgPathLength" value="0"/>
+          <attvalue for="urlLength" value="10"/>
+          <attvalue for="whoIs" value="SmugMug, Inc."/>
         </attvalues>
       </node>
-      <node id="combo.staticflickr.com" label="combo.staticflickr.com">
+      <node id="combo.staticflickr.com">
         <attvalues>
           <attvalue for="xmlhttprequest" value="0"/>
           <attvalue for="image" value="1"/>
@@ -626,9 +646,11 @@
           <attvalue for="maxSubdomainDepth" value="1"/>
           <attvalue for="avgSubdomainLength" value="6"/>
           <attvalue for="avgPathLength" value="50"/>
+          <attvalue for="urlLength" value="22"/>
+          <attvalue for="whoIs" value="SmugMug, Inc."/>
         </attvalues>
       </node>
-      <node id="fls-na.amazon.com" label="fls-na.amazon.com">
+      <node id="fls-na.amazon.com">
         <attvalues>
           <attvalue for="xmlhttprequest" value="0"/>
           <attvalue for="image" value="0"/>
@@ -668,9 +690,10 @@
           <attvalue for="maxSubdomainDepth" value="1"/>
           <attvalue for="avgSubdomainLength" value="7"/>
           <attvalue for="avgPathLength" value="14"/>
+          <attvalue for="urlLength" value="17"/>
         </attvalues>
       </node>
-      <node id="aax-eu.amazon-adsystem.com" label="aax-eu.amazon-adsystem.com">
+      <node id="aax-eu.amazon-adsystem.com">
         <attvalues>
           <attvalue for="xmlhttprequest" value="0"/>
           <attvalue for="image" value="0"/>
@@ -710,9 +733,10 @@
           <attvalue for="maxSubdomainDepth" value="1"/>
           <attvalue for="avgSubdomainLength" value="7"/>
           <attvalue for="avgPathLength" value="6"/>
+          <attvalue for="urlLength" value="26"/>
         </attvalues>
       </node>
-      <node id="p0.itc.cn" label="p0.itc.cn">
+      <node id="p0.itc.cn">
         <attvalues>
           <attvalue for="xmlhttprequest" value="0"/>
           <attvalue for="image" value="1"/>
@@ -752,9 +776,10 @@
           <attvalue for="maxSubdomainDepth" value="1"/>
           <attvalue for="avgSubdomainLength" value="3"/>
           <attvalue for="avgPathLength" value="88"/>
+          <attvalue for="urlLength" value="9"/>
         </attvalues>
       </node>
-      <node id="p4.itc.cn" label="p4.itc.cn">
+      <node id="p4.itc.cn">
         <attvalues>
           <attvalue for="xmlhttprequest" value="0"/>
           <attvalue for="image" value="1"/>
@@ -794,9 +819,10 @@
           <attvalue for="maxSubdomainDepth" value="1"/>
           <attvalue for="avgSubdomainLength" value="3"/>
           <attvalue for="avgPathLength" value="55"/>
+          <attvalue for="urlLength" value="9"/>
         </attvalues>
       </node>
-      <node id="p5.itc.cn" label="p5.itc.cn">
+      <node id="p5.itc.cn">
         <attvalues>
           <attvalue for="xmlhttprequest" value="0"/>
           <attvalue for="image" value="1"/>
@@ -836,11 +862,12 @@
           <attvalue for="maxSubdomainDepth" value="1"/>
           <attvalue for="avgSubdomainLength" value="3"/>
           <attvalue for="avgPathLength" value="88"/>
+          <attvalue for="urlLength" value="9"/>
         </attvalues>
       </node>
     </nodes>
     <edges>
-      <edge id="geid_100_0" source="medium.com" target="static.cloudflareinsights.com">
+      <edge id="geid_132_0" source="medium.com" target="static.cloudflareinsights.com">
         <attvalues>
           <attvalue for="xmlhttprequest" value="0"/>
           <attvalue for="image" value="0"/>
@@ -881,7 +908,7 @@
           <attvalue for="avgPathLength" value="61"/>
         </attvalues>
       </edge>
-      <edge id="geid_100_1" source="consent.dropbox.com" target="cfl.dropboxstatic.com">
+      <edge id="geid_132_1" source="consent.dropbox.com" target="cfl.dropboxstatic.com">
         <attvalues>
           <attvalue for="xmlhttprequest" value="0"/>
           <attvalue for="image" value="0"/>
@@ -922,7 +949,7 @@
           <attvalue for="avgPathLength" value="76"/>
         </attvalues>
       </edge>
-      <edge id="geid_100_2" source="consent.dropbox.com" target="c.evidon.com">
+      <edge id="geid_132_2" source="consent.dropbox.com" target="c.evidon.com">
         <attvalues>
           <attvalue for="xmlhttprequest" value="0"/>
           <attvalue for="image" value="0"/>
@@ -963,7 +990,7 @@
           <attvalue for="avgPathLength" value="163"/>
         </attvalues>
       </edge>
-      <edge id="geid_100_3" source="consent.dropbox.com" target="l.evidon.com">
+      <edge id="geid_132_3" source="consent.dropbox.com" target="l.evidon.com">
         <attvalues>
           <attvalue for="xmlhttprequest" value="0"/>
           <attvalue for="image" value="2"/>
@@ -1004,7 +1031,7 @@
           <attvalue for="avgPathLength" value="68"/>
         </attvalues>
       </edge>
-      <edge id="geid_100_4" source="www.sohu.com" target="statics.itc.cn">
+      <edge id="geid_132_4" source="www.sohu.com" target="statics.itc.cn">
         <attvalues>
           <attvalue for="xmlhttprequest" value="0"/>
           <attvalue for="image" value="12"/>
@@ -1045,7 +1072,7 @@
           <attvalue for="avgPathLength" value="574"/>
         </attvalues>
       </edge>
-      <edge id="geid_100_5" source="www.sohu.com" target="p6.itc.cn">
+      <edge id="geid_132_5" source="www.sohu.com" target="p6.itc.cn">
         <attvalues>
           <attvalue for="xmlhttprequest" value="0"/>
           <attvalue for="image" value="3"/>
@@ -1086,7 +1113,7 @@
           <attvalue for="avgPathLength" value="263"/>
         </attvalues>
       </edge>
-      <edge id="geid_100_6" source="www.imdb.com" target="m.media-amazon.com">
+      <edge id="geid_132_6" source="www.imdb.com" target="m.media-amazon.com">
         <attvalues>
           <attvalue for="xmlhttprequest" value="0"/>
           <attvalue for="image" value="19"/>
@@ -1127,7 +1154,7 @@
           <attvalue for="avgPathLength" value="2342"/>
         </attvalues>
       </edge>
-      <edge id="geid_100_7" source="flickr.com" target="combo.staticflickr.com">
+      <edge id="geid_132_7" source="flickr.com" target="combo.staticflickr.com">
         <attvalues>
           <attvalue for="xmlhttprequest" value="0"/>
           <attvalue for="image" value="1"/>
@@ -1168,7 +1195,7 @@
           <attvalue for="avgPathLength" value="50"/>
         </attvalues>
       </edge>
-      <edge id="geid_100_8" source="www.imdb.com" target="fls-na.amazon.com">
+      <edge id="geid_132_8" source="www.imdb.com" target="fls-na.amazon.com">
         <attvalues>
           <attvalue for="xmlhttprequest" value="0"/>
           <attvalue for="image" value="0"/>
@@ -1209,7 +1236,7 @@
           <attvalue for="avgPathLength" value="14"/>
         </attvalues>
       </edge>
-      <edge id="geid_100_9" source="www.imdb.com" target="aax-eu.amazon-adsystem.com">
+      <edge id="geid_132_9" source="www.imdb.com" target="aax-eu.amazon-adsystem.com">
         <attvalues>
           <attvalue for="xmlhttprequest" value="0"/>
           <attvalue for="image" value="0"/>
@@ -1250,7 +1277,7 @@
           <attvalue for="avgPathLength" value="6"/>
         </attvalues>
       </edge>
-      <edge id="geid_100_10" source="www.sohu.com" target="p0.itc.cn">
+      <edge id="geid_132_10" source="www.sohu.com" target="p0.itc.cn">
         <attvalues>
           <attvalue for="xmlhttprequest" value="0"/>
           <attvalue for="image" value="2"/>
@@ -1291,7 +1318,7 @@
           <attvalue for="avgPathLength" value="176"/>
         </attvalues>
       </edge>
-      <edge id="geid_100_11" source="www.sohu.com" target="p4.itc.cn">
+      <edge id="geid_132_11" source="www.sohu.com" target="p4.itc.cn">
         <attvalues>
           <attvalue for="xmlhttprequest" value="0"/>
           <attvalue for="image" value="1"/>
@@ -1332,7 +1359,7 @@
           <attvalue for="avgPathLength" value="55"/>
         </attvalues>
       </edge>
-      <edge id="geid_100_12" source="www.sohu.com" target="p5.itc.cn">
+      <edge id="geid_132_12" source="www.sohu.com" target="p5.itc.cn">
         <attvalues>
           <attvalue for="xmlhttprequest" value="0"/>
           <attvalue for="image" value="1"/>

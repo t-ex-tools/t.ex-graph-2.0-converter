@@ -23,6 +23,6 @@ program.command('gexf')
   .option('--sld', 'in case nodes should be second level domains instead of fully qualified domain names')
   .option('-fp, --first-party', 'include first-party requests to generate nodes and edges')
   .option('-s, --silent', 'disable progress indicator printing on console')
-  .action(Controller.gexf);
+  .action((dir, options) => Controller.gexf(dir, options));
 
 program.parse();
