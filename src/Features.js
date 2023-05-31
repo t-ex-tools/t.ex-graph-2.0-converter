@@ -313,20 +313,6 @@ export default (() => {
     },
 
     /**
-     * @desc Average number of HTTP/S request headers per request
-     */
-    /*
-    avgRhPerRq: {
-      'extract': (r, acc) => {
-        return acc + r.requestHeaders.length;
-      },
-      'set': (feature, attrs) => {
-        return Util.ratio(attrs[feature], attrs.count);
-      }
-    },
-    */
-
-    /**
      * @desc Average number of HTTP/S request headers per in-neighbor
      */
     avgRhPerNeighbor: {
@@ -377,7 +363,6 @@ export default (() => {
     /**
      * @desc Average number of HTTP/S cookies per in-neighbor
      */
-    /*
     avgCookieFieldsPerNeighbor: {
       'extract': (r, acc) => {
         return acc + Util.cookie(r).length;
@@ -386,7 +371,6 @@ export default (() => {
         return Util.ratio(attrs[feature], attrs.indegree);
       }
     },
-    */
 
     /**
      * @desc Maximum subdomain depth
@@ -420,29 +404,6 @@ export default (() => {
     },
 
     /**
-     * @desc Average length of subdomain
-     * **NOTE:** dots are included in the length
-     */
-    /*
-    avgSubdomainLength: {
-      'extract': (r, acc) => {
-        let hostname = new URL(Util.target(r)).hostname;
-        let sld = getDomain(hostname);
-        let subdomain = hostname
-          .split(sld)
-          .filter(Boolean);
-
-        return (subdomain.length === 0)
-          ? acc
-          : acc + subdomain[0].length;
-      },
-      'set': (feature, attrs) => {
-        return Util.ratio(attrs[feature], attrs.count);
-      }
-    },
-    */
-
-    /**
      * @desc Average HTTP/S path length
      */
     avgPathLength: {
@@ -459,7 +420,7 @@ export default (() => {
      * @desc The length of the hostname
      * **NOTE:** dots are included in the length
      */
-    urlLength: {
+    hostUrlLength: {
       'extract': () => null,
       'set': (feature, attrs) => attrs.node.length
     },

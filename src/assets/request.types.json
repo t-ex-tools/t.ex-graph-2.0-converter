@@ -10,5 +10,6 @@
   "main_frame",
   "csp_report",
   "object",
-  "media"
+  "media",
+  "websocket"
 ]
