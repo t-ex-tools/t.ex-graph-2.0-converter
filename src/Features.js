@@ -329,6 +329,10 @@ export default (() => {
      */
     avgRespHPerRq: {
       'extract': (r, acc) => {
+        if (!r.response.responseHeaders) {
+          r.response.responseHeaders = [];
+        }
+
         return acc + r.response.responseHeaders.length;
       },
       'set': (feature, attrs) => {
@@ -341,6 +345,10 @@ export default (() => {
      */
     avgRespHPerNeighbor: {
       'extract': (r, acc) => {
+        if (!r.response.responseHeaders) {
+          r.response.responseHeaders = [];
+        }
+
         return acc + r.response.responseHeaders.length;
       },
       'set': (feature, attrs) => {

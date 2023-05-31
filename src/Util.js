@@ -69,6 +69,9 @@ export default {
    * Returns ``undefined`` in case header with ``name === key`` is not present.
    */
   header(headers, key) {
+    if (!headers) {
+      headers = [];
+    }
     return headers.find((h) => h.name.toLowerCase() === key.toLowerCase())
   },
 
