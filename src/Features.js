@@ -2,7 +2,6 @@ import fs from 'fs';
 import Util from "./Util.js";
 import pkg from 'tldjs';
 const { getDomain } = pkg;
-import whois from 'whois-json';
 
 /**
  * @module Features
@@ -316,6 +315,7 @@ export default (() => {
     /**
      * @desc Average number of HTTP/S request headers per request
      */
+    /*
     avgRhPerRq: {
       'extract': (r, acc) => {
         return acc + r.requestHeaders.length;
@@ -324,6 +324,7 @@ export default (() => {
         return Util.ratio(attrs[feature], attrs.count);
       }
     },
+    */
 
     /**
      * @desc Average number of HTTP/S request headers per in-neighbor
@@ -376,6 +377,7 @@ export default (() => {
     /**
      * @desc Average number of HTTP/S cookies per in-neighbor
      */
+    /*
     avgCookieFieldsPerNeighbor: {
       'extract': (r, acc) => {
         return acc + Util.cookie(r).length;
@@ -384,6 +386,7 @@ export default (() => {
         return Util.ratio(attrs[feature], attrs.indegree);
       }
     },
+    */
 
     /**
      * @desc Maximum subdomain depth
@@ -420,6 +423,7 @@ export default (() => {
      * @desc Average length of subdomain
      * **NOTE:** dots are included in the length
      */
+    /*
     avgSubdomainLength: {
       'extract': (r, acc) => {
         let hostname = new URL(Util.target(r)).hostname;
@@ -436,6 +440,7 @@ export default (() => {
         return Util.ratio(attrs[feature], attrs.count);
       }
     },
+    */
 
     /**
      * @desc Average HTTP/S path length
@@ -450,26 +455,24 @@ export default (() => {
       }
     },
 
+    /**
+     * @desc The length of the hostname
+     * **NOTE:** dots are included in the length
+     */
     urlLength: {
       'extract': () => null,
       'set': (feature, attrs) => attrs.node.length
     },
 
-    whoIs: {
-      'extract': () => null,
-      'set': async (feature, attrs) => {
-        let sld = getDomain(attrs.node);
-        try {
-          let whoIs = await whois(sld);
-          if (!whoIs.registrantOrganization) {
-            console.log(sld, whoIs)
-          }
-          return whoIs.registrantOrganization;
-        } catch (err) {
-          return "UNKNOWN";
-        }
-      }
-    }
+    /**
+     * https://developer.chrome.com/docs/extensions/reference/webNavigation/#method-getFrame
+     */
+    frameIdGtZero: {
+      'extract': (r, acc) => (r.frameId > 0)
+        ? acc + 1
+        : acc,
+      'set': (feature, attrs) => Util.ratio(attrs[feature], attrs.count)
+    },
 
   };
 
